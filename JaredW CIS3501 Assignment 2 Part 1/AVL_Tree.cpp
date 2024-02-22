@@ -144,6 +144,7 @@ int AVL::getBalanceFactor(TreeNode* tree)
 	}
 }
 
+//
 void AVL::BalanceTree(TreeNode*& tree)
 {
 	int BF = getBalanceFactor(tree);
@@ -178,33 +179,47 @@ void AVL::BalanceTree(TreeNode*& tree)
 	}
 }
 
-
-
-//Recursive Helper Function converts the binary search tree into a vector of string vectors in preorder(VLR).
-void AVL::preorder(TreeNode* tree, int depth, int left, int right, vector<vector<string>>& result)
+// RIGHT-RIGHT imbalance scenario
+void AVL::SingleLeft(TreeNode*& tree)
 {
-	//Base Case: Returns if the current node is NULL
-	if (tree == nullptr) return;
+	TreeNode* temp = tree->right;
+	tree->right = temp->left; 	opCount.comparisons++;	// operation
+	temp->left = tree;			opCount.comparisons++;  // operation
 
-	//Calculates the middle index for this depth level
-	int mid = (left + right) / 2;
+	tree->height = max(get_height(tree->left), get_height(tree->right)) + 1;
+	temp->height = max(get_height(temp->left), get_height(temp->right)) + 1;
 
-	//if the current node has a twin value then add that value to the nodes print
-	if (tree->twin > 1) {
-		result[depth][mid] = to_string(tree->info) + "-" + to_string(tree->twin);
-	}
-	//if the current node does not have a twin value then print the value
-	else if (tree->twin == 1) {
-		result[depth][mid] = to_string(tree->info);
-	}
-
-	//Recursively traverse the left and right subtrees in preorder, increasing depth for each level.
-	//Functions also format the tree from top to bottom, in a pyramid shape. 
-	preorder(tree->left, depth + 1, left, mid - 1, result);
-	preorder(tree->right, depth + 1, mid + 1, right, result);
+	tree = temp;				opCount.comparisons++;  // operation
 }
 
+// LEFT-LEFT imbalance scenario
+void AVL::SingleRight(TreeNode*& tree)
+{
+	TreeNode* temp = tree->left;
+	tree->left = temp->right;	opCount.comparisons++;	// operation
+	temp->right = tree;			opCount.comparisons++;	// operation
 
+	tree->height = max(get_height(tree->left), get_height(tree->right)) + 1;
+	temp->height = max(get_height(temp->left), get_height(temp->right)) + 1;
+
+	tree = temp;				opCount.comparisons++;	// operation
+}
+
+// RIGHT-LEFT imbalance scenario
+void AVL::DoubleLeft(TreeNode*& tree)
+{
+	SingleRight(tree->right);
+	SingleLeft(tree);
+}
+
+// LEFT-RIGHT imbalance scenario
+void AVL::DoubleRight(TreeNode*& tree)
+{
+	SingleLeft(tree->left);
+	SingleRight(tree);
+}
+
+// Prints the AVL tree
 void AVL::Print(TreeNode* tree, ofstream& outfile, char OperationType) {
 	//Finds the height and width of the tree
 	int h = tree->height;
@@ -303,6 +318,7 @@ void AVL::Print(TreeNode* tree, ofstream& outfile, char OperationType) {
 
 }
 
+// Keeps track of all operations in the function
 void AVL::OperationSummary(ofstream& outputfile, string test_title) {
 
 	//Declare variables
@@ -337,6 +353,30 @@ void AVL::OperationSummary(ofstream& outputfile, string test_title) {
 	cout << "Delete:          " << DeleteSum << endl << endl;
 	cout << "               _____" << endl;
 	cout << "Total            " << total << endl;
+}
+
+//Recursive Helper Function converts the binary search tree into a vector of string vectors in preorder(VLR).
+void AVL::preorder(TreeNode* tree, int depth, int left, int right, vector<vector<string>>& result)
+{
+	//Base Case: Returns if the current node is NULL
+	if (tree == nullptr) return;
+
+	//Calculates the middle index for this depth level
+	int mid = (left + right) / 2;
+
+	//if the current node has a twin value then add that value to the nodes print
+	if (tree->twin > 1) {
+		result[depth][mid] = to_string(tree->info) + "-" + to_string(tree->twin);
+	}
+	//if the current node does not have a twin value then print the value
+	else if (tree->twin == 1) {
+		result[depth][mid] = to_string(tree->info);
+	}
+
+	//Recursively traverse the left and right subtrees in preorder, increasing depth for each level.
+	//Functions also format the tree from top to bottom, in a pyramid shape. 
+	preorder(tree->left, depth + 1, left, mid - 1, result);
+	preorder(tree->right, depth + 1, mid + 1, right, result);
 }
 
 
