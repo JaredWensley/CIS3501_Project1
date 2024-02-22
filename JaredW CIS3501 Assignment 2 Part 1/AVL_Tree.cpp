@@ -144,48 +144,6 @@ int AVL::getBalanceFactor(TreeNode* tree)
 	}
 }
 
-// RIGHT-RIGHT imbalance scenario
-void AVL::SingleLeft(TreeNode*& tree) 
-{
-	TreeNode* temp = tree->right; 
-	tree->right = temp->left; 	opCount.comparisons++;	// operation
-	temp->left = tree;			opCount.comparisons++;  // operation
-
-	tree->height = max(get_height(tree->left), get_height(tree->right)) + 1;
-	temp->height = max(get_height(temp->left), get_height(temp->right)) + 1;
-
-	tree = temp;				opCount.comparisons++;  // operation
-}
-
-// LEFT-LEFT imbalance scenario
-void AVL::SingleRight(TreeNode*& tree)
-{
-	TreeNode* temp = tree->left;
-	tree->left = temp->right;	opCount.comparisons++;	// operation
-	temp->right = tree;			opCount.comparisons++;	// operation
-
-	tree->height = max(get_height(tree->left), get_height(tree->right)) + 1;
-	temp->height = max(get_height(temp->left), get_height(temp->right)) + 1;
-
-	tree = temp;				opCount.comparisons++;	// operation
-}
-
-
-// RIGHT-LEFT imbalance scenario
-void AVL::DoubleLeft(TreeNode*& tree) 
-{
-	SingleRight(tree->right);
-	SingleLeft(tree);
-}
-
-
-// LEFT-RIGHT imbalance scenario
-void AVL::DoubleRight(TreeNode*& tree) 
-{
-	SingleLeft(tree->left);
-	SingleRight(tree);
-}
-
 void AVL::BalanceTree(TreeNode*& tree)
 {
 	int BF = getBalanceFactor(tree);
