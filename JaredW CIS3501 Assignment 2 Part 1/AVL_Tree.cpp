@@ -124,15 +124,6 @@ void AVL::Insert(TreeNode*& tree, int item) {
 	BalanceTree(tree);
 }
 
-// Helper function that finds the height of a node
-int AVL::height(TreeNode* tree) 
-{
-	if (tree == nullptr) {
-		return 0;
-	}
-	return max(height(tree->left), height(tree->right)) + 1;
-}
-
 // Helper function returns the height of the tree
 int AVL::get_height(TreeNode* tree) 
 {
@@ -225,6 +216,7 @@ void AVL::BalanceTree(TreeNode*& tree)
 }
 
 
+
 //Recursive Helper Function converts the binary search tree into a vector of string vectors in preorder(VLR).
 void AVL::preorder(TreeNode* tree, int depth, int left, int right, vector<vector<string>>& result)
 {
@@ -252,7 +244,7 @@ void AVL::preorder(TreeNode* tree, int depth, int left, int right, vector<vector
 
 void AVL::Print(TreeNode* tree, ofstream& outfile, char OperationType) {
 	//Finds the height and width of the tree
-	int h = height(tree);
+	int h = tree->height;
 	int w = pow(2, h) - 1;
 
 	//Creates a vector of string vectors used to convert the tree from linked lists. 

@@ -11,7 +11,6 @@ int main()
 	BST bst;
 	AVL avl;
 
-	string treetype;
 
 	//Enter Test name
 	cout << "Enter the Title of this Test: ";

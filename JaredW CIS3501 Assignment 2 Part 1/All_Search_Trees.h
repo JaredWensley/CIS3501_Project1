@@ -70,7 +70,7 @@ private:
 class AVL {
 public:
 	AVL();
-	int height(TreeNode* tree);
+	
 	void OperationSummary(ofstream& outputfile, string test_title);
 	void InsertFile(string filename, ofstream& outputfile);
 	void SingleLeft(TreeNode*& tree);
