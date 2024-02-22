@@ -1,0 +1,64 @@
+Insert: 6
+
+6 
+ 
+
+Height: 1
+Operations: 2   [Compare:1 create:1 ]
+__________________________________
+Insert: 8
+
+  6   
+   
+    8 
+   
+
+Height: 2
+Operations: 4   [Compare:3 create:1 ]
+__________________________________
+Insert: 7
+
+  7   
+   
+6   8 
+   
+
+Height: 2
+Operations: 12   [Compare:11 create:1 ]
+__________________________________
+Insert: 10
+
+      7       
+       
+  6       8   
+       
+            10 
+       
+
+Height: 3
+Operations: 6   [Compare:5 create:1 ]
+__________________________________
+Insert: 9
+
+      7       
+       
+  6       9   
+       
+        8   10 
+       
+
+Height: 3
+Operations: 14   [Compare:13 create:1 ]
+__________________________________
+                 DoubleLeft
+
+Creation:        38
+
+Search:          0
+
+Insert:          0
+
+Delete:          0
+
+               _____
+Total            38

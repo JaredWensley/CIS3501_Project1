@@ -1,0 +1,102 @@
+Insert: 4
+
+4 
+ 
+
+Height: 1
+Operations: 2   [Compare:1 create:1 ]
+__________________________________
+Insert: 1
+
+  4   
+   
+1     
+   
+
+Height: 2
+Operations: 4   [Compare:3 create:1 ]
+__________________________________
+Insert: 5
+
+  4   
+   
+1   5 
+   
+
+Height: 2
+Operations: 4   [Compare:3 create:1 ]
+__________________________________
+Insert: 7
+
+      4       
+       
+  1       5   
+       
+            7 
+       
+
+Height: 3
+Operations: 6   [Compare:5 create:1 ]
+__________________________________
+Insert: 9
+
+      4       
+       
+  1       7   
+       
+        5   9 
+       
+
+Height: 3
+Operations: 11   [Compare:10 create:1 ]
+__________________________________
+Insert: 11
+
+      7       
+       
+  4       9   
+       
+1   5       11 
+       
+
+Height: 3
+Operations: 11   [Compare:10 create:1 ]
+__________________________________
+Insert: 14
+
+      7       
+       
+  4       11   
+       
+1   5   9   14 
+       
+
+Height: 3
+Operations: 11   [Compare:10 create:1 ]
+__________________________________
+Insert: 16
+
+              7               
+               
+      4               11       
+               
+  1       5       9       14   
+               
+                            16 
+               
+
+Height: 4
+Operations: 8   [Compare:7 create:1 ]
+__________________________________
+                 leftrotation
+
+Creation:        57
+
+Search:          0
+
+Insert:          0
+
+Delete:          0
+
+               _____
+Total            57

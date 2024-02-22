@@ -1,0 +1,130 @@
+Insert: 9
+
+9 
+ 
+
+Height: 1
+Operations: 2   [Compare:1 create:1 ]
+__________________________________
+Insert: 12
+
+  9   
+   
+    12 
+   
+
+Height: 2
+Operations: 4   [Compare:3 create:1 ]
+__________________________________
+Insert: 16
+
+  12   
+   
+9   16 
+   
+
+Height: 2
+Operations: 9   [Compare:8 create:1 ]
+__________________________________
+Insert: 7
+
+      12       
+       
+  9       16   
+       
+7             
+       
+
+Height: 3
+Operations: 6   [Compare:5 create:1 ]
+__________________________________
+Insert: 5
+
+      12       
+       
+  7       16   
+       
+5   9         
+       
+
+Height: 3
+Operations: 11   [Compare:10 create:1 ]
+__________________________________
+Insert: 13
+
+      12       
+       
+  7       16   
+       
+5   9   13     
+       
+
+Height: 3
+Operations: 6   [Compare:5 create:1 ]
+__________________________________
+Insert: 15
+
+      12       
+       
+  7       15   
+       
+5   9   13   16 
+       
+
+Height: 3
+Operations: 14   [Compare:13 create:1 ]
+__________________________________
+Insert: 14
+
+              12               
+               
+      7               15       
+               
+  5       9       13       16   
+               
+                    14         
+               
+
+Height: 4
+Operations: 8   [Compare:7 create:1 ]
+__________________________________
+Insert: 3
+
+              12               
+               
+      7               15       
+               
+  5       9       13       16   
+               
+3                   14         
+               
+
+Height: 4
+Operations: 8   [Compare:7 create:1 ]
+__________________________________
+Insert: 4
+
+              12               
+               
+      7               15       
+               
+  4       9       13       16   
+               
+3   5               14         
+               
+
+Height: 4
+Operations: 16   [Compare:15 create:1 ]
+__________________________________
+                 Allrotate
+
+Creation:        84
+
+Search:          0
+
+Insert:          0
+
+Delete:          0
+
+               _____
+Total            84
