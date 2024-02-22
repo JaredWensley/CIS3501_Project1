@@ -39,6 +39,7 @@ struct TreeNode {
 	int height =0;						// Holds the heigh of the node
 };
 
+// For part 2 figure out correct inheritence and reuse code that can be reused.
 //Class for managing binary search tree functions
 class BST {
 public:
