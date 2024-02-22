@@ -22,7 +22,7 @@ void BST::ActionFile(string actionfilename, ofstream& outputfile) {
 		outputfile << "Error opening file: " + actionfilename << ": Please check your filename" << endl;
 		return;
 	}
-
+	
 	// Check if the file is empty
 	if (actionfile.peek() == ifstream::traits_type::eof()) {
 		cerr << "Error: The file " + actionfilename + " is empty, please enter a different file" << endl;

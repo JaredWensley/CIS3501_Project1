@@ -91,8 +91,6 @@ void AVL::Insert(TreeNode*& tree, int item) {
 		tree->right = nullptr;			//Sets right child to NULL
 		tree->left = nullptr;			//Sets left child to NULL
 		tree->info = item;				//Sets the new nodes value to the param item
-		tree->twin = 1;					//Sets the new nodes twin value to 1
-		tree->height = 0;				//Sets leaf node height to 0
 		opCount.comparisons++;
 	}
 
@@ -111,22 +109,24 @@ void AVL::Insert(TreeNode*& tree, int item) {
 		opCount.comparisons++;			//Increase node comparisons variabe by 1
 		Insert(tree->right, item);		//Recursive call with the next right node
 	}
+
 	
+	// Set a new nodes height equal to 1
+	if (tree->height == 0) {
+		tree->height = 1;
+	}
 
-		// Finds the current node height using the nodes left and right height value
+	// Find the new height of an already existing node. So we add a comparison
+	else {
 		tree->height = max(get_height(tree->right), get_height(tree->left)) + 1;
-
-		
-		if (BF > 1) {
-			opCount.comparisons++;
-			}
-			else {
-				// LEFT-RIGHT scenario. Rotate left then right
-				DoubleRight(tree);
-			}
+		opCount.comparisons++;
+	}
+	BalanceTree(tree);
+}
 
 // Helper function that finds the height of a node
-int AVL::height(TreeNode* tree) {
+int AVL::height(TreeNode* tree) 
+{
 	if (tree == nullptr) {
 		return 0;
 	}
@@ -134,7 +134,8 @@ int AVL::height(TreeNode* tree) {
 }
 
 // Helper function returns the height of the tree
-int AVL::get_height(TreeNode* tree) {
+int AVL::get_height(TreeNode* tree) 
+{
 	if (tree == nullptr) {
 		return 0;
 	}
@@ -142,7 +143,8 @@ int AVL::get_height(TreeNode* tree) {
 }
 
 // Helper Function to insert: gets nodes balance factor
-int AVL::getBalanceFactor(TreeNode* tree) {
+int AVL::getBalanceFactor(TreeNode* tree) 
+{
 	if (tree == nullptr) {
 		return 0;
 	}
@@ -152,38 +154,74 @@ int AVL::getBalanceFactor(TreeNode* tree) {
 }
 
 // RIGHT-RIGHT imbalance scenario
-void AVL::SingleLeft(TreeNode*& tree) {
-	TreeNode* temp = tree->right;
-	tree->right = temp->left;
-	temp->left = tree;
+void AVL::SingleLeft(TreeNode*& tree) 
+{
+	TreeNode* temp = tree->right; 
+	tree->right = temp->left; 	opCount.comparisons++;	// operation
+	temp->left = tree;			opCount.comparisons++;  // operation
 
 	tree->height = max(get_height(tree->left), get_height(tree->right)) + 1;
 	temp->height = max(get_height(temp->left), get_height(temp->right)) + 1;
-	tree = temp;
+
+	tree = temp;				opCount.comparisons++;  // operation
 }
 
 // LEFT-LEFT imbalance scenario
-void AVL::SingleRight(TreeNode*& tree) {
+void AVL::SingleRight(TreeNode*& tree)
+{
 	TreeNode* temp = tree->left;
-	tree->left = temp->right;
-	temp->right = tree;
+	tree->left = temp->right;	opCount.comparisons++;	// operation
+	temp->right = tree;			opCount.comparisons++;	// operation
+
 	tree->height = max(get_height(tree->left), get_height(tree->right)) + 1;
 	temp->height = max(get_height(temp->left), get_height(temp->right)) + 1;
-	tree = temp;
+
+	tree = temp;				opCount.comparisons++;	// operation
 }
 
 
 // RIGHT-LEFT imbalance scenario
-void AVL::DoubleLeft(TreeNode*& tree) {
+void AVL::DoubleLeft(TreeNode*& tree) 
+{
 	SingleRight(tree->right);
 	SingleLeft(tree);
 }
 
 
 // LEFT-RIGHT imbalance scenario
-void AVL::DoubleRight(TreeNode*& tree) {
+void AVL::DoubleRight(TreeNode*& tree) 
+{
 	SingleLeft(tree->left);
 	SingleRight(tree);
+}
+
+void AVL::BalanceTree(TreeNode*& tree)
+{
+	int BF = getBalanceFactor(tree);
+
+
+	if (BF > 1) {
+
+		if (getBalanceFactor(tree->left) >= 0) {
+			// LEFT-LEFT scenario. Rotate Right once
+			SingleRight(tree);
+		}
+		else {
+			// LEFT-RIGHT scenario. Rotate left then right
+			DoubleRight(tree);
+		}
+	}
+	else if (BF < -1) {
+
+		if (getBalanceFactor(tree->right) <= 0) {
+			// RIGHT-RIGHT scenario. Rotate left once
+			SingleLeft(tree);
+		}
+		else {
+			// RIGHT-LEFT scenario. Rotate right then left
+			DoubleLeft(tree);
+		}
+	}
 }
 
 

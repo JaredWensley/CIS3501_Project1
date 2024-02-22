@@ -1,6 +1,7 @@
 #ifndef BST_SEARCH_TREE_h
 #define BST_SEARCH_TREE_h
-
+#include <fstream>
+#include <iostream>
 #include <vector>
 #include <string>
 #include <array>
@@ -33,34 +34,9 @@ struct OperationCount {
 struct TreeNode {
 	TreeNode* left = nullptr;		// Pointer to left node
 	TreeNode* right = nullptr;		// Pointer to rigt node
-	int info;						// Holds value of the node
-	int twin;						// Tracks number of duplicate node values
-	int height;						// Holds the heigh of the node
-};
-
-// Class for managing self balacing tree
-class AVL {
-public:
-	AVL();
-	int height(TreeNode* tree);
-	void OperationSummary(ofstream& outputfile, string test_title);
-	void InsertFile(string filename, ofstream& outputfile);
-	void SingleLeft(TreeNode*& tree);
-	void SingleRight(TreeNode*& tree);
-	void DoubleLeft(TreeNode*& tree);
-	void DoubleRight(TreeNode*& tree);
-	void InsertItem(int item);
-	void PrintTree(ofstream&, char OperationType);
-	void preorder(TreeNode* tree, int depth, int left, int right, vector<vector<string>>& result);
-	OperationCount opCount;
-
-private:
-	void Print(TreeNode* tree, ofstream& outfile, char);
-	int get_height(TreeNode* tree);
-	void Insert(TreeNode*& tree, int item);
-	int getBalanceFactor(TreeNode* tree);
-	TreeNode* root;
-	
+	int info = 0;						// Holds value of the node
+	int twin = 1;						// Tracks number of duplicate node values
+	int height =0;						// Holds the heigh of the node
 };
 
 //Class for managing binary search tree functions
@@ -90,5 +66,30 @@ private:
 	TreeNode* root;				//Pointer to the tree root.
 };
 
+// Class for managing self balacing tree
+class AVL {
+public:
+	AVL();
+	int height(TreeNode* tree);
+	void OperationSummary(ofstream& outputfile, string test_title);
+	void InsertFile(string filename, ofstream& outputfile);
+	void SingleLeft(TreeNode*& tree);
+	void SingleRight(TreeNode*& tree);
+	void DoubleLeft(TreeNode*& tree);
+	void DoubleRight(TreeNode*& tree);
+	void BalanceTree(TreeNode*& tree);
+	void InsertItem(int item);
+	void PrintTree(ofstream&, char OperationType);
+	void preorder(TreeNode* tree, int depth, int left, int right, vector<vector<string>>& result);
+	OperationCount opCount;
+
+private:
+	void Print(TreeNode* tree, ofstream& outfile, char);
+	int get_height(TreeNode* tree);
+	void Insert(TreeNode*& tree, int item);
+	int getBalanceFactor(TreeNode* tree);
+	TreeNode* root;
+
+};
 
 #endif 
