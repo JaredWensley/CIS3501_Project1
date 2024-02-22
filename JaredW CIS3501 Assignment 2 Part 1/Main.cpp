@@ -13,8 +13,6 @@ int main()
 
 	string treetype;
 
-
-
 	//Enter Test name
 	cout << "Enter the Title of this Test: ";
 	getline(cin, test_title);
@@ -41,9 +39,6 @@ int main()
 	getline(cin, outputfilename);
 	outputfilename = outputfilename + ".txt";
 	cout << endl;
-
-	cout << "Type BST or AVL to choose which search tree to use" << endl;
-	cin >> treetype;
 
 	ofstream output(outputfilename);
 
