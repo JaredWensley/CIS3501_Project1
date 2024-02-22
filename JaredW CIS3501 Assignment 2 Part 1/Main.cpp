@@ -1,8 +1,4 @@
 // JaredW CIS3501 Assignment 2 Part 1.cpp : 
-#include <string>
-#include <fstream>
-#include <iostream>
-#include <vector>
 #include "All_Search_Trees.h"
 using namespace std;
 
@@ -14,7 +10,6 @@ int main()
 	string ActionFile;
 	BST bst;
 	AVL avl;
-
 
 
 	//Enter Test name

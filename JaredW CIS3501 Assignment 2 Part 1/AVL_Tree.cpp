@@ -66,7 +66,6 @@ void AVL::InsertFile(string filename, ofstream& outputfile) {
 	insertfile.close();		//Close input file stream
 }
 
-
 // Default constuctor that sets root to NULL
 AVL::AVL() {
 	root = nullptr;
@@ -113,9 +112,6 @@ void AVL::Insert(TreeNode*& tree, int item) {
 		Insert(tree->right, item);		//Recursive call with the next right node
 	}
 	
-	if (tree != nullptr) {
-		//Find balance factor of node
-		int BF = getBalanceFactor(tree);	
 
 		// Finds the current node height using the nodes left and right height value
 		tree->height = max(get_height(tree->right), get_height(tree->left)) + 1;
@@ -123,33 +119,11 @@ void AVL::Insert(TreeNode*& tree, int item) {
 		
 		if (BF > 1) {
 			opCount.comparisons++;
-
-			if (getBalanceFactor(tree->left) >= 0) {
-				// LEFT-LEFT scenario. Rotate Right once
-				SingleRight(tree);
-				opCount.comparisons++;
 			}
 			else {
 				// LEFT-RIGHT scenario. Rotate left then right
 				DoubleRight(tree);
 			}
-		}
-		else if (BF < -1) {
-			opCount.comparisons++;
-
-			if (getBalanceFactor(tree->right) <= 0) {
-				// RIGHT-RIGHT scenario. Rotate left once
-				opCount.comparisons++;
-				SingleLeft(tree);
-			}
-			else {
-				// RIGHT-LEFT scenario. Rotate right then left
-				DoubleLeft(tree);
-			}
-		}
-		
-	}
-}
 
 // Helper function that finds the height of a node
 int AVL::height(TreeNode* tree) {
