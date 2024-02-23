@@ -71,8 +71,10 @@ private:
 class AVL {
 public:
 	AVL();
-	
+	void DeleteItem(int, ofstream& outfile);
+	void SearchItem(int& item, bool& found);
 	void OperationSummary(ofstream& outputfile, string test_title);
+	void ActionFile(string actionfile, ofstream& outputfile);
 	void InsertFile(string filename, ofstream& outputfile);
 	void SingleLeft(TreeNode*& tree);
 	void SingleRight(TreeNode*& tree);
@@ -85,10 +87,16 @@ public:
 	OperationCount opCount;
 
 private:
+	bool isValidCommand(char check);
 	void Print(TreeNode* tree, ofstream& outfile, char);
 	int get_height(TreeNode* tree);
 	void Insert(TreeNode*& tree, int item);
 	int getBalanceFactor(TreeNode* tree);
+	void Search(TreeNode* tree, int& item, bool& found);
+	void Delete(TreeNode*& tree, int item, ofstream& outfile);
+	void DeleteNode(TreeNode*& tree);
+	void GetPredecessor(TreeNode* tree, int& item, int& twin_chain);
+	void DeletePredecessor(TreeNode*& tree, int item);
 	TreeNode* root;
 
 };

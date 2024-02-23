@@ -23,13 +23,12 @@ int main()
 	InsertFile = InsertFile + ".txt";
 	cout << endl;
 
-	/* Not part of assignemny part 1. will be included in part 2
 	// Prompt the user for the action file name
 	cout << "Enter Action file name excluding the .txt: ";
 	getline(cin, ActionFile);
 	ActionFile = ActionFile + ".txt";
 	cout << endl;
-	*/
+
 
 	string outputfilename;
 	//prompt the user to enter the name of the outputfile
@@ -47,6 +46,7 @@ int main()
 
 	// Testing AVL insert
 	avl.InsertFile(InsertFile, output);
+	avl.ActionFile(ActionFile, output);
 
 	//print report
 	//bst.OperationSummary(output, test_title);

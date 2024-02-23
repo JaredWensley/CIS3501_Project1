@@ -9,6 +9,13 @@
 
 using namespace std;
 
+// Default constuctor that sets root to NULL
+AVL::AVL() {
+	root = nullptr;
+}
+
+
+// Insert integers from a insert file into the AVL tree
 void AVL::InsertFile(string filename, ofstream& outputfile) {
 
 	ifstream insertfile(filename);	//Input file stream
@@ -66,9 +73,147 @@ void AVL::InsertFile(string filename, ofstream& outputfile) {
 	insertfile.close();		//Close input file stream
 }
 
-// Default constuctor that sets root to NULL
-AVL::AVL() {
-	root = nullptr;
+// Deletes an item in the BST from the Action file. 
+void AVL::DeleteItem(int item, ofstream& outfile) {
+	Delete(root, item, outfile);
+}
+
+
+// Calls functions dependent on each line from the action file whie checking for errors
+void AVL::ActionFile(string actionfilename, ofstream& outputfile) {
+	bool found;
+	ifstream actionfile(actionfilename);
+	string line;
+	int lineNumber = 0;
+
+	// Checks if the file can open
+	if (!actionfile.is_open()) {
+		cerr << "Error opening file: " + actionfilename << ": Please check your filename" << endl;
+		outputfile << "Error opening file: " + actionfilename << ": Please check your filename" << endl;
+		return;
+	}
+
+	// Check if the file is empty
+	if (actionfile.peek() == ifstream::traits_type::eof()) {
+		cerr << "Error: The file " + actionfilename + " is empty, please enter a different file" << endl;
+		outputfile << "Error: The file " + actionfilename + " is empty, please enter a different file" << endl;
+		return;
+	}
+
+	// Calls functions and handles errors for each line in the action file
+	while (getline(actionfile, line)) {
+		lineNumber++; // Increment line number
+
+		//Handle Error: Line is empty
+		if (line.empty()) continue;
+
+
+		// Handle Error: if the first character is not a letter
+		if (!isalpha(line[0])) {
+			cerr << "Error on line " << lineNumber << ": First character is not a letter, skipping line" << endl;
+			cerr << "Error on line " << lineNumber << ": First character is not a letter, skipping line" << endl;
+			;
+		}
+
+		//Changes each lines first character to lower case letter
+		char action = tolower(line[0]);
+
+		// Hanlde Error: Checks if the letter command is valid or not
+		if (!isValidCommand(action)) {
+			cerr << "Error on line " << lineNumber << " of Action file: Invalid character, skipping line." << endl;
+			outputfile << "Error on line " << lineNumber << " of Action file: Invalid character, skipping line. " << endl;
+			continue;
+		}
+
+		stringstream ss(line.substr(1)); // To read from the rest of the line
+		int num;
+		char extra;
+
+		// Hanlde Error: If there is no number after the command character
+		if (!(ss >> num)) {
+			cerr << "Error on line " << lineNumber << " of action file: Missing or invalid argument after command. Skipping line." << endl;
+			outputfile << "Error on line " << lineNumber << " of action file: Missing or invalid argument after command. Skipping line." << endl;
+			continue;
+		}
+		// Handle Error: Extra character found after number,
+		else if (ss >> extra) {
+			cerr << "Error on line " << lineNumber << " of action file: Missing or invalid argument after command. Skipping line." << endl;
+			outputfile << "Error on line " << lineNumber << " of action file: Missing or invalid argument after command. Skipping line." << endl;
+			continue;
+		}
+
+		// Continue to call insert, delte or search functions
+		else {
+
+			char D = 'D';
+			char I = 'I';
+			char S = 'S';
+			switch (action) {
+			case 'i':
+
+				outputfile << "Insert: " << num << endl << endl;
+				cout << "Insert: " << num << endl << endl;
+
+
+				// Call insert function
+				// no need for empty tree check
+				opCount.inserts++;
+				InsertItem(num);
+
+				PrintTree(outputfile, I);
+				break;
+
+			case 'd':
+
+				// Call delete function
+				outputfile << "Delete: " << num << endl << endl;
+				cout << "Delete: " << num << endl << endl;
+				DeleteItem(num, outputfile);
+
+				// Check if the 
+				opCount.comparisons++;
+				if (root == nullptr) {
+					outputfile << endl;
+					cout << endl;
+					outputfile << "BINARY SEARCH TREE IS EMPTY" << endl;
+					cout << "BINARY SEARCH TREE IS EMPTY" << endl;
+				}
+				PrintTree(outputfile, D);
+				break;
+
+			case 's':
+
+
+				// Call search function
+				SearchItem(num, found);
+				outputfile << "Search: " << num << endl << endl;
+				cout << "Search: " << num << endl << endl;
+
+				// If tree is empty
+				opCount.comparisons++;
+				if (root == nullptr) {
+					outputfile << endl;
+					cout << endl;
+					outputfile << "BINARY SEARCH TREE IS EMPTY" << endl;
+					cout << "BINARY SEARCH TREE IS EMPTY" << endl;
+				}
+				// If the number was not found in the Binary Search Tree
+				else if (!found) {
+					outputfile << num << " not found: printing current tree" << endl;
+					cout << num << " not found: printing current tree" << endl;
+				}
+
+				//Print the Binary Search Tree
+				PrintTree(outputfile, S);
+				break;
+
+			default:
+				cerr << "Error: No functions were called" << endl;
+				outputfile << "Error: No functions were called" << endl;
+				return;
+			}
+		}
+	}
 }
 
 // Calls the Insert function
@@ -76,10 +221,17 @@ void AVL::InsertItem(int item) {
 	Insert(root, item);
 }
 
+
+void AVL::SearchItem(int& item, bool& found) {
+	Search(root, item, found);
+}
+
+
 // Prints AVL tree
 void AVL::PrintTree(ofstream& outfile, char OperationChar) {
 	Print(root, outfile, OperationChar);
 }
+
 
 //Helper function. Inserts items into the AVL tree
 void AVL::Insert(TreeNode*& tree, int item) {
@@ -121,8 +273,38 @@ void AVL::Insert(TreeNode*& tree, int item) {
 		tree->height = max(get_height(tree->right), get_height(tree->left)) + 1;
 		opCount.comparisons++;
 	}
+	
 	BalanceTree(tree);
+	
+	
 }
+
+
+//Recursive Helper Function that searches for an number in the tree. 
+void AVL::Search(TreeNode* tree, int& item, bool& found){
+
+	// If the node is not found
+	if (tree == nullptr) {
+		found = false;
+		opCount.comparisons++;
+	}
+	// If the items value is less than the current tree nodes values, traverse left
+	else if (item < tree->info) {
+		Search(tree->left, item, found);
+		opCount.comparisons++;
+	}
+	// If the items value is greater than the current tree nodes values, traverse right
+	else if (item > tree->info) {
+		Search(tree->right, item, found);
+		opCount.comparisons++;
+	}
+	// if the item is equal to the current tree node.
+	else if (item == tree->info) {
+		found = true;
+		opCount.comparisons++;
+	}
+}
+
 
 // Helper function returns the height of the tree
 int AVL::get_height(TreeNode* tree) 
@@ -132,6 +314,7 @@ int AVL::get_height(TreeNode* tree)
 	}
 	return tree->height;
 }
+
 
 // Helper Function to insert: gets nodes balance factor
 int AVL::getBalanceFactor(TreeNode* tree) 
@@ -143,6 +326,7 @@ int AVL::getBalanceFactor(TreeNode* tree)
 		return(get_height(tree->left) - (get_height(tree->right)));
 	}
 }
+
 
 //
 void AVL::BalanceTree(TreeNode*& tree)
@@ -179,6 +363,7 @@ void AVL::BalanceTree(TreeNode*& tree)
 	}
 }
 
+
 // RIGHT-RIGHT imbalance scenario
 void AVL::SingleLeft(TreeNode*& tree)
 {
@@ -191,6 +376,7 @@ void AVL::SingleLeft(TreeNode*& tree)
 
 	tree = temp;				opCount.comparisons++;  // operation
 }
+
 
 // LEFT-LEFT imbalance scenario
 void AVL::SingleRight(TreeNode*& tree)
@@ -205,6 +391,7 @@ void AVL::SingleRight(TreeNode*& tree)
 	tree = temp;				opCount.comparisons++;	// operation
 }
 
+
 // RIGHT-LEFT imbalance scenario
 void AVL::DoubleLeft(TreeNode*& tree)
 {
@@ -212,12 +399,120 @@ void AVL::DoubleLeft(TreeNode*& tree)
 	SingleLeft(tree);
 }
 
+
 // LEFT-RIGHT imbalance scenario
 void AVL::DoubleRight(TreeNode*& tree)
 {
 	SingleLeft(tree->left);
 	SingleRight(tree);
 }
+
+
+//Helper function that finds node to delete
+void AVL::Delete(TreeNode*& tree, int item, ofstream& outfile) {
+
+	// If the item does not exist in the tree
+	if (tree == nullptr) {
+		outfile << item << " not found: printing current tree" << endl;
+		cout << item << " not found: printing current tree" << endl;
+		opCount.comparisons++;
+		return;
+	}
+
+	// traverse to the LEFT node if the items value is less than the current nodes value
+	if (item < tree->info) {
+		Delete(tree->left, item, outfile);
+		opCount.comparisons++;
+	}
+
+	// traverse to the RIGHT node if the items value is creater than the current nodes value
+	else if (item > tree->info) {
+		Delete(tree->right, item, outfile);
+		opCount.comparisons++;
+	}
+
+	// Decrease the nodes twin value by one if its value is creater than one
+	else if (tree->twin > 1) {
+		tree->twin = tree->twin - 1;
+		opCount.deletes++;
+		opCount.comparisons++;
+	}
+
+	// Calls function to delete current node. At this point there is no twin chain value.
+	else {
+		DeleteNode(tree);
+	}
+
+	BalanceTree(tree);
+}
+
+
+// helper function that Deletes the node passed in
+void AVL::DeleteNode(TreeNode*& tree) {
+	int item;
+	int twin_chain;
+
+	//temp pointer variable used to delete
+	TreeNode* tempPtr;
+	tempPtr = tree;
+
+	// If the current node has 0 or 1 children. No left node
+	if (tree->left == nullptr) {
+		tree = tree->right;
+		delete tempPtr;
+		opCount.deletes++;
+		opCount.comparisons++;
+	}
+	// If the current node has 0 or 1 children. No right node
+	else if (tree->right == nullptr) {
+		tree = tree->left;
+		delete tempPtr;
+		opCount.deletes++;
+		opCount.comparisons++;
+	}
+	// If the current node has 2 children. Calls function to get replacement for deleted node
+	else {
+		opCount.comparisons++;
+		GetPredecessor(tree->left, item, twin_chain);		// Find ideal replacement
+		tree->info = item;									// Sets node equal to replacement items value					 
+		tree->twin = twin_chain;							// Sets node equal to replacement items twin value.
+		DeletePredecessor(tree->left, item);				// Delete it's old position	
+	}
+}
+
+
+//Helper function: Gets correct replacement node. Finds the left right most node to retreive
+void AVL::GetPredecessor(TreeNode* tree, int& item, int& twin_chain) {
+	while (tree->right != nullptr) {
+		tree = tree->right;
+		opCount.comparisons++;
+	}
+	twin_chain = tree->twin;
+	item = tree->info;
+}
+
+
+//Helper function: Deletes predecessor from GetPredecessor()
+void AVL::DeletePredecessor(TreeNode*& tree, int item) {
+
+	// traverse to the LEFT node if the items value is less than the current nodes value
+	if (item < tree->info) {
+		opCount.comparisons++;
+		DeletePredecessor(tree->left, item);
+	}
+
+	// traverse to the RIGHT node if the items value is creater than the current nodes value
+	else if (item > tree->info) {
+		opCount.comparisons++;
+		DeletePredecessor(tree->right, item);
+	}
+	// Delete the node
+	else {
+		tree->twin = 1;		// Set twin value to default to delete the complete node
+		DeleteNode(tree);
+	}
+}
+
 
 // Prints the AVL tree
 void AVL::Print(TreeNode* tree, ofstream& outfile, char OperationType) {
@@ -318,6 +613,7 @@ void AVL::Print(TreeNode* tree, ofstream& outfile, char OperationType) {
 
 }
 
+
 // Keeps track of all operations in the function
 void AVL::OperationSummary(ofstream& outputfile, string test_title) {
 
@@ -355,6 +651,7 @@ void AVL::OperationSummary(ofstream& outputfile, string test_title) {
 	cout << "Total            " << total << endl;
 }
 
+
 //Recursive Helper Function converts the binary search tree into a vector of string vectors in preorder(VLR).
 void AVL::preorder(TreeNode* tree, int depth, int left, int right, vector<vector<string>>& result)
 {
@@ -377,6 +674,12 @@ void AVL::preorder(TreeNode* tree, int depth, int left, int right, vector<vector
 	//Functions also format the tree from top to bottom, in a pyramid shape. 
 	preorder(tree->left, depth + 1, left, mid - 1, result);
 	preorder(tree->right, depth + 1, mid + 1, right, result);
+}
+
+
+//Helper function for the action file function
+bool AVL::isValidCommand(char check) {
+	return check == 'i' || check == 'd' || check == 's';
 }
 
 

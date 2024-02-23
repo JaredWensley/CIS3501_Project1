@@ -247,6 +247,7 @@ void BST::Insert(TreeNode*& tree, int item)
 		tree->left = nullptr;			//Sets left child to NULL
 		tree->info = item;				//Sets the new nodes value to the param item
 		tree->twin = 1;					//Sets the new nodes twin value to 1
+		tree->height = 0;
 		opCount.comparisons++;
 	}
 
@@ -265,6 +266,7 @@ void BST::Insert(TreeNode*& tree, int item)
 		opCount.comparisons++;			//Increase node comparisons variabe by 1
 		Insert(tree->right, item);		//Recursive call with the next right node
 	}
+	
 }
 
 
