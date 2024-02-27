@@ -128,7 +128,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AVL_Tree.cpp" />
-    <ClCompile Include="Binary_Search_Tree.cpp" />
+    <ClCompile Include="BasicTreeFunctions.cpp" />
+    <ClCompile Include="BST_Tree.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>

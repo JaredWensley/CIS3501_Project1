@@ -10,7 +10,7 @@
 using namespace std;
 
 // Calls functions dependent on each line from the action file whie checking for errors
-void BST::ActionFile(string actionfilename, ofstream& outputfile) {
+void BasicTree::ProcessActionFile(string actionfilename, ofstream& outputfile) {
 	bool found;
 	ifstream actionfile(actionfilename);
 	string line;
@@ -147,7 +147,7 @@ void BST::ActionFile(string actionfilename, ofstream& outputfile) {
 }
 
 // Inserts integers from file into the binary search tree while checking for errors
-void BST::InsertFile(string filename, ofstream& outputfile) {
+void BasicTree::ProcessInsertFile(string filename, ofstream& outputfile) {
 
 	ifstream insertfile(filename);	//Input file stream
 	string line;					// String to hold each line of input
@@ -204,111 +204,23 @@ void BST::InsertFile(string filename, ofstream& outputfile) {
 	insertfile.close();		//Close input file stream
 }
 
-
-//Constructor for BST which initializes the root as null
-BST::BST() {
-	root = nullptr;
-}
-
-// Inserts an item into the BST
-void BST::InsertItem(int item) {
-	Insert(root, item);
-}
-
-// Deletes an item in the BST from the Action file. 
-void BST::DeleteItem(int item, ofstream& outfile) {
-	Delete(root, item, outfile);
-}
-
 // Searches for an item i the BST from the Action file
-void BST::SearchItem(int& item, bool& found) {
+void BasicTree::SearchItem(int& item, bool& found) {
 	Search(root, item, found);
 }
 
 // Prints the BST and resets all counters
-void BST::PrintTree(ofstream& outfile, char OperationType) {
+void BasicTree::PrintTree(ofstream& outfile, char OperationType) {
 	Print(root, outfile, OperationType);
 }
 
-//Helper function for the action file function
-bool BST::isValidCommand(char check) {
+// Helper function for the action file function
+bool BasicTree::isValidCommand(char check) {
 	return check == 'i' || check == 'd' || check == 's';
 }
 
-
-//Recursive Helper Function that inserts a number into the binary search tree
-void BST::Insert(TreeNode*& tree, int item)
-{
-
-	//if the current tree node location is NULL then create a new tree node
-	if (tree == nullptr) {
-		tree = new TreeNode;			//Node Creation
-		tree->right = nullptr;			//Sets right child to NULL
-		tree->left = nullptr;			//Sets left child to NULL
-		tree->info = item;				//Sets the new nodes value to the param item
-		tree->twin = 1;					//Sets the new nodes twin value to 1
-		tree->height = 0;
-		opCount.comparisons++;
-	}
-
-	//if the item is equal to the nodes values then increase the nodes twin value by 1 
-	else if (item == tree->info) {
-		tree->twin = tree->twin + 1;	//Increase nodes twin value by 1
-		opCount.comparisons++;			//Increase node comparisons variabe by 1
-	}
-
-	else if (item < tree->info) {
-		opCount.comparisons++;			//Increase node comparisons variabe by 1
-		Insert(tree->left, item);		//Recursive call with the next left node
-	}
-
-	else {
-		opCount.comparisons++;			//Increase node comparisons variabe by 1
-		Insert(tree->right, item);		//Recursive call with the next right node
-	}
-	
-}
-
-
-//Helper function that finds node to delete
-void BST::Delete(TreeNode*& tree, int item, ofstream& outfile) {
-
-	// If the item does not exist in the tree
-	if (tree == nullptr) {
-		outfile << item << " not found: printing current tree" << endl;
-		cout << item << " not found: printing current tree" << endl;
-		opCount.comparisons++;
-		return;
-	}
-
-	// traverse to the LEFT node if the items value is less than the current nodes value
-	if (item < tree->info) {
-		Delete(tree->left, item, outfile);
-		opCount.comparisons++;
-	}
-
-	// traverse to the RIGHT node if the items value is creater than the current nodes value
-	else if (item > tree->info) {
-		Delete(tree->right, item, outfile);
-		opCount.comparisons++;
-	}
-
-	// Decrease the nodes twin value by one if its value is creater than one
-	else if (tree->twin > 1) {
-		tree->twin = tree->twin - 1;
-		opCount.deletes++;
-		opCount.comparisons++;
-	}
-
-	// Calls function to delete current node. At this point there is no twin chain value.
-	else {
-		DeleteNode(tree);
-	}
-}
-
-
-// helper function that Deletes the node passed in
-void BST::DeleteNode(TreeNode*& tree) {
+// Helper function that Deletes the node passed in
+void BasicTree::DeleteNode(TreeNode*& tree) {
 	int item;
 	int twin_chain;
 
@@ -340,9 +252,8 @@ void BST::DeleteNode(TreeNode*& tree) {
 	}
 }
 
-
-//Helper function: Gets correct replacement node. Finds the left right most node to retreive
-void BST::GetPredecessor(TreeNode* tree, int& item, int& twin_chain) {
+// Helper function: Gets correct replacement node. Finds the left right most node to retreive
+void BasicTree::GetPredecessor(TreeNode* tree, int& item, int& twin_chain) {
 	while (tree->right != nullptr) {
 		tree = tree->right;
 		opCount.comparisons++;
@@ -351,9 +262,8 @@ void BST::GetPredecessor(TreeNode* tree, int& item, int& twin_chain) {
 	item = tree->info;
 }
 
-
-//Helper function: Deletes predecessor from GetPredecessor()
-void BST::DeletePredecessor(TreeNode*& tree, int item) {
+// Helper function: Deletes predecessor from GetPredecessor()
+void BasicTree::DeletePredecessor(TreeNode*& tree, int item) {
 
 	// traverse to the LEFT node if the items value is less than the current nodes value
 	if (item < tree->info) {
@@ -373,9 +283,8 @@ void BST::DeletePredecessor(TreeNode*& tree, int item) {
 	}
 }
 
-
-//Recursive Helper Function that searches for an number in the tree. 
-void BST::Search(TreeNode* tree, int& item, bool& found) {
+// Recursive Helper Function that searches for an number in the tree. 
+void BasicTree::Search(TreeNode* tree, int& item, bool& found) {
 
 	// If the node is not found
 	if (tree == nullptr) {
@@ -399,45 +308,12 @@ void BST::Search(TreeNode* tree, int& item, bool& found) {
 	}
 }
 
-//Recursive Helper Function converts the binary search tree into a vector of string vectors in preorder(VLR).
-void BST::preorder(TreeNode* tree, int depth, int left, int right, vector<vector<string>>& result)
-{
-	//Base Case: Returns if the current node is NULL
-	if (tree == nullptr) return;
-
-	//Calculates the middle index for this depth level
-	int mid = (left + right) / 2;
-
-	//if the current node has a twin value then add that value to the nodes print
-	if (tree->twin > 1) {
-		result[depth][mid] = to_string(tree->info) + "-" + to_string(tree->twin);
-	}
-	//if the current node does not have a twin value then print the value
-	else if (tree->twin == 1) {
-		result[depth][mid] = to_string(tree->info);
-	}
-
-	//Recursively traverse the left and right subtrees in preorder, increasing depth for each level.
-	//Functions also format the tree from top to bottom, in a pyramid shape. 
-	preorder(tree->left, depth + 1, left, mid - 1, result);
-	preorder(tree->right, depth + 1, mid + 1, right, result);
-}
-
-
-//Recursive Helper Function that finds the height of the binary search tree
-int BST::height(TreeNode* tree) {
-	if (tree == nullptr) {
-		return 0;
-	}
-	return max(height(tree->left), height(tree->right)) + 1;
-}
-
-
-//Helper Function that prints the binary search tree
-void BST::Print(TreeNode* tree, ofstream& outfile, char OperationType)
+// Helper Function that prints the binary search tree
+void BasicTree::Print(TreeNode* tree, ofstream& outfile, char OperationType)
 {
 	//Finds the height and width of the tree
-	int h = height(tree);
+
+	int h = tree->height;
 	int w = pow(2, h) - 1;
 
 	//Creates a vector of string vectors used to convert the tree from linked lists. 
@@ -530,10 +406,42 @@ void BST::Print(TreeNode* tree, ofstream& outfile, char OperationType)
 
 	//Resets the operations counter
 	opCount.reset();
-
 }
 
-void BST::OperationSummary(ofstream& outputfile, string test_title) {
+// Recursive Helper Function converts the binary search tree into a vector of string vectors in preorder(VLR).
+void BasicTree::preorder(TreeNode* tree, int depth, int left, int right, vector<vector<string>>& result)
+{
+	//Base Case: Returns if the current node is NULL
+	if (tree == nullptr) return;
+
+	//Calculates the middle index for this depth level
+	int mid = (left + right) / 2;
+
+	//if the current node has a twin value then add that value to the nodes print
+	if (tree->twin > 1) {
+		result[depth][mid] = to_string(tree->info) + "-" + to_string(tree->twin);
+	}
+	//if the current node does not have a twin value then print the value
+	else if (tree->twin == 1) {
+		result[depth][mid] = to_string(tree->info);
+	}
+
+	//Recursively traverse the left and right subtrees in preorder, increasing depth for each level.
+	//Functions also format the tree from top to bottom, in a pyramid shape. 
+	preorder(tree->left, depth + 1, left, mid - 1, result);
+	preorder(tree->right, depth + 1, mid + 1, right, result);
+}
+
+// Recursive Helper Function that finds the height of the binary search tree
+int BasicTree::get_height(TreeNode* tree) {
+	if (tree == nullptr) {
+		return 0;
+	}
+	return tree->height;
+}
+
+// Prints out all Operation counters
+void BasicTree::OperationSummary(ofstream& outputfile, string test_title) {
 
 	//Declare variables
 	int total;

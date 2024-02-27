@@ -10,12 +10,17 @@ int main()
 	string ActionFile;
 	BST bst;
 	AVL avl;
-
+	string TreeType;
 
 	//Enter Test name
 	cout << "Enter the Title of this Test: ";
 	getline(cin, test_title);
 	cout << endl;
+
+	// Pick which tree to run
+	cout << "Type either AVL, BST: ";
+	getline(cin, TreeType);
+	
 
 	// Prompt the user for the insert file name
 	cout << "Enter Insert file name excluding the .txt: ";
@@ -38,19 +43,49 @@ int main()
 	outputfilename = outputfilename + ".txt";
 	cout << endl;
 
+
+
 	ofstream output(outputfilename);
+	BasicTree* tree = nullptr; // Pointer to the base class
 
-	// Check for errors and insert file items
-	//bst.InsertFile(InsertFile, output);
-	//bst.ActionFile(ActionFile, output);
+	if (TreeType == "BST") {
+		tree = new BST(); // Dynamically create a BST
+	}
+	else if (TreeType == "AVL") {
+		tree = new AVL(); // Dynamically create an AVL
+	}
+	else {
+		cout << "Error: Check your spelling of your tree type";
+		return 1;
+	}
 
-	// Testing AVL insert
-	avl.InsertFile(InsertFile, output);
-	avl.ActionFile(ActionFile, output);
+	// Now use 'tree' to call the functions
+	tree->ProcessInsertFile(InsertFile, output);
+	tree->ProcessActionFile(ActionFile, output);
+	tree->OperationSummary(output, test_title);
 
-	//print report
-	//bst.OperationSummary(output, test_title);
-	avl.OperationSummary(output, test_title);
+	delete tree; // Don't forget to release memory.
+	output.close(); // Clean up the ofstream.
+
+	return 0;
+	/*
+	if (TreeType == "BST") {
+		// Run the binary search tree function
+		bst.ProcessInsertFile(InsertFile, output);
+		bst.ProcessActionFile(ActionFile, output);
+		bst.OperationSummary(output, test_title);
+	}
+	
+	else if (TreeType == "AVL") {
+		// Run the AVL search tree function
+		avl.ProcessInsertFile(InsertFile, output);
+		avl.ProcessActionFile(ActionFile, output);
+		avl.OperationSummary(output, test_title);
+	}
+	else {
+		cout << "Error: Check your spelling of your tree type";
+	}
+	*/
 }
 
 
