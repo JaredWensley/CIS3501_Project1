@@ -306,7 +306,7 @@ Insert: 6
 Height: 5
 Operations: 16   [Compare:15 Insert:1 ]
 ______________________________________________________________
-                 TEST
+                 test
 
 Creation:        152
 

@@ -6,15 +6,13 @@ int main()
 {
 	//Declare necessary Variables and objects
 	string InsertFile;
-	string test_title;
+	string TestTitle;
 	string ActionFile;
-	BST bst;
-	AVL avl;
 	string TreeType;
 
 	//Enter Test name
 	cout << "Enter the Title of this Test: ";
-	getline(cin, test_title);
+	getline(cin, TestTitle);
 	cout << endl;
 
 	// Pick which tree to run
@@ -22,7 +20,8 @@ int main()
 	getline(cin, TreeType);
 
 
-	BasicTree* tree = nullptr; // Pointer to the base class
+	// Pointer to the base class
+	BasicTree* tree = nullptr; 
 
 	if (TreeType == "BST") {
 		tree = new BST(); // Dynamically create a BST
@@ -34,6 +33,7 @@ int main()
 		cout << "Error: Check your spelling of your tree type; must be BST or AVL";
 		return 1;
 	}
+	cout << endl;
 
 
 	// Prompt the user for the insert file name
@@ -48,24 +48,21 @@ int main()
 	ActionFile = ActionFile + ".txt";
 	cout << endl;
 
-
-	string outputfilename;
 	//prompt the user to enter the name of the outputfile
+	string outputfilename;
 	cout << "Note, file can not be made if the file name contains: / \\ : ? * \" < > |" << endl;
 	cout << "Enter output file name excluding the .txt: ";
 	getline(cin, outputfilename);
 	outputfilename = outputfilename + ".txt";
 	cout << endl;
 
-
-
+	// Declare file
 	ofstream output(outputfilename);
 	
-
 	// use 'tree' to call the functions
 	tree->ProcessInsertFile(InsertFile, output);
 	tree->ProcessActionFile(ActionFile, output);
-	tree->OperationSummary(output, test_title);
+	tree->OperationSummary(output, TestTitle);
 
 	delete tree; 
 	output.close(); 
