@@ -6,7 +6,6 @@
 #include <string>
 #include <stdexcept>
 #include <numeric>
-
 using namespace std;
 
 // Default constructor

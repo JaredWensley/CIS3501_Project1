@@ -6,6 +6,7 @@
 #include <string>
 using namespace std;
 
+//structure for defining nodes of the binary search tree to be used as linked lists 
 struct TreeNode {
 	TreeNode* left = nullptr;		// Pointer to left node
 	TreeNode* right = nullptr;		// Pointer to rigt node
@@ -90,7 +91,7 @@ private:
 	void BalanceTree(TreeNode*& tree);
 };
 
-//structure for defining nodes of the binary search tree to be used as linked lists 
+
 
 #endif 
 
