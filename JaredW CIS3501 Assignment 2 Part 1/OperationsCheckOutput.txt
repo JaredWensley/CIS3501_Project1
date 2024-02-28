@@ -1,0 +1,139 @@
+Insert: 9
+
+9 
+ 
+
+Height: 1
+Operations: 2   [Compare:1 create:1 ]
+__________________________________
+Insert: 12
+
+  9   
+   
+    12 
+   
+
+Height: 2
+Operations: 4   [Compare:3 create:1 ]
+__________________________________
+Insert: 6
+
+  9   
+   
+6   12 
+   
+
+Height: 2
+Operations: 4   [Compare:3 create:1 ]
+__________________________________
+Insert: 2
+
+      9       
+       
+  6       12   
+       
+2             
+       
+
+Height: 3
+Operations: 6   [Compare:5 create:1 ]
+__________________________________
+Insert: 7
+
+      9       
+       
+  6       12   
+       
+2   7         
+       
+
+Height: 3
+Operations: 6   [Compare:5 create:1 ]
+__________________________________
+Insert: 11
+
+      9       
+       
+  6       12   
+       
+2   7   11     
+       
+
+Height: 3
+Operations: 6   [Compare:5 create:1 ]
+__________________________________
+Insert: 14
+
+      9       
+       
+  6       12   
+       
+2   7   11   14 
+       
+
+Height: 3
+Operations: 6   [Compare:5 create:1 ]
+__________________________________
+Search: 8
+
+8 not found: printing current tree
+      9       
+       
+  6       12   
+       
+2   7   11   14 
+       
+
+Height: 3
+Operations: 5   [Compare:5 ]
+__________________________________
+Search: 13
+
+13 not found: printing current tree
+      9       
+       
+  6       12   
+       
+2   7   11   14 
+       
+
+Height: 3
+Operations: 5   [Compare:5 ]
+__________________________________
+Delete: 15
+
+15 not found: printing current tree
+      9       
+       
+  6       12   
+       
+2   7   11   14 
+       
+
+Height: 3
+Operations: 5   [Compare:5 ]
+__________________________________
+Delete: 2
+
+      9       
+       
+  6       12   
+       
+    7   11   14 
+       
+
+Height: 3
+Operations: 5   [Compare:4 Delete:1 ]
+__________________________________
+                 OperationsCheckOutput
+
+Creation:        34
+
+Search:          10
+
+Insert:          0
+
+Delete:          10
+
+               _____
+Total            54

@@ -105,8 +105,8 @@ void BasicTree::ProcessActionFile(string actionfilename, ofstream& outputfile) {
 				if (root == nullptr) {
 					outputfile << endl;
 					cout << endl;
-					outputfile << "BINARY SEARCH TREE IS EMPTY" << endl;
-					cout << "BINARY SEARCH TREE IS EMPTY" << endl;
+					outputfile << "TREE IS EMPTY" << endl;
+					cout << "TREE IS EMPTY" << endl;
 				}
 				PrintTree(outputfile, D);
 				break;
@@ -124,8 +124,8 @@ void BasicTree::ProcessActionFile(string actionfilename, ofstream& outputfile) {
 				if (root == nullptr) {
 					outputfile << endl;
 					cout << endl;
-					outputfile << "BINARY SEARCH TREE IS EMPTY" << endl;
-					cout << "BINARY SEARCH TREE IS EMPTY" << endl;
+					outputfile << "TREE IS EMPTY" << endl;
+					cout << "TREE IS EMPTY" << endl;
 				}
 				// If the number was not found in the Binary Search Tree
 				else if (!found) {
@@ -312,8 +312,13 @@ void BasicTree::Search(TreeNode* tree, int& item, bool& found) {
 void BasicTree::Print(TreeNode* tree, ofstream& outfile, char OperationType)
 {
 	//Finds the height and width of the tree
-
-	int h = tree->height;
+	int h;
+	if (tree == nullptr) {
+		h = 0;
+	}
+	else {
+		h = tree->height;
+	}
 	int w = pow(2, h) - 1;
 
 	//Creates a vector of string vectors used to convert the tree from linked lists. 

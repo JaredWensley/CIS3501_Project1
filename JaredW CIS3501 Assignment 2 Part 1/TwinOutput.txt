@@ -1,0 +1,172 @@
+Insert: 9
+
+9 
+ 
+
+Height: 1
+Operations: 2   [Compare:1 create:1 ]
+__________________________________
+Insert: 5
+
+  9   
+   
+5     
+   
+
+Height: 2
+Operations: 4   [Compare:3 create:1 ]
+__________________________________
+Insert: 12
+
+  9   
+   
+5   12 
+   
+
+Height: 2
+Operations: 4   [Compare:3 create:1 ]
+__________________________________
+Insert: 15
+
+      9       
+       
+  5       12   
+       
+            15 
+       
+
+Height: 3
+Operations: 6   [Compare:5 create:1 ]
+__________________________________
+Insert: 17
+
+      9       
+       
+  5       15   
+       
+        12   17 
+       
+
+Height: 3
+Operations: 11   [Compare:10 create:1 ]
+__________________________________
+Insert: 16
+
+      15       
+       
+  9       17   
+       
+5   12   16     
+       
+
+Height: 3
+Operations: 11   [Compare:10 create:1 ]
+__________________________________
+Insert: 16
+
+      15       
+       
+  9       17   
+       
+5   12   16-2     
+       
+
+Height: 3
+Operations: 7   [Compare:6 create:1 ]
+__________________________________
+Insert: 7
+
+              15               
+               
+      9               17       
+               
+  5       12       16-2           
+               
+    7                         
+               
+
+Height: 4
+Operations: 8   [Compare:7 create:1 ]
+__________________________________
+Insert: 7
+
+              15               
+               
+      9               17       
+               
+  5       12       16-2           
+               
+    7-2                         
+               
+
+Height: 4
+Operations: 9   [Compare:8 create:1 ]
+__________________________________
+Delete: 7
+
+              15               
+               
+      9               17       
+               
+  5       12       16-2           
+               
+    7                         
+               
+
+Height: 4
+Operations: 6   [Compare:5 Delete:1 ]
+__________________________________
+Delete: 7
+
+              15               
+               
+      9               17       
+               
+  5       12       16-2           
+               
+                              
+               
+
+Height: 4
+Operations: 6   [Compare:5 Delete:1 ]
+__________________________________
+Delete: 16
+
+              15               
+               
+      9               17       
+               
+  5       12       16           
+               
+                              
+               
+
+Height: 4
+Operations: 5   [Compare:4 Delete:1 ]
+__________________________________
+Delete: 16
+
+              15               
+               
+      9               17       
+               
+  5       12                   
+               
+                              
+               
+
+Height: 4
+Operations: 5   [Compare:4 Delete:1 ]
+__________________________________
+                 TwinOutput
+
+Creation:        62
+
+Search:          0
+
+Insert:          0
+
+Delete:          22
+
+               _____
+Total            84

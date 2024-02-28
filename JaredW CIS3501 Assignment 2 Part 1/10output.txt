@@ -1,0 +1,264 @@
+Insert: 51
+
+51 
+ 
+
+Height: 1
+Operations: 2   [Compare:1 create:1 ]
+__________________________________
+Insert: 43
+
+  51   
+   
+43     
+   
+
+Height: 2
+Operations: 4   [Compare:3 create:1 ]
+__________________________________
+Insert: 84
+
+  51   
+   
+43   84 
+   
+
+Height: 2
+Operations: 4   [Compare:3 create:1 ]
+__________________________________
+Insert: 64
+
+      51       
+       
+  43       84   
+       
+        64     
+       
+
+Height: 3
+Operations: 6   [Compare:5 create:1 ]
+__________________________________
+Insert: 81
+
+      51       
+       
+  43       81   
+       
+        64   84 
+       
+
+Height: 3
+Operations: 14   [Compare:13 create:1 ]
+__________________________________
+Insert: 34
+
+      51       
+       
+  43       81   
+       
+34       64   84 
+       
+
+Height: 3
+Operations: 6   [Compare:5 create:1 ]
+__________________________________
+Insert: 15
+
+      51       
+       
+  34       81   
+       
+15   43   64   84 
+       
+
+Height: 3
+Operations: 11   [Compare:10 create:1 ]
+__________________________________
+Insert: 72
+
+              51               
+               
+      34               81       
+               
+  15       43       64       84   
+               
+                    72         
+               
+
+Height: 4
+Operations: 8   [Compare:7 create:1 ]
+__________________________________
+Insert: 9
+
+              51               
+               
+      34               81       
+               
+  15       43       64       84   
+               
+9                   72         
+               
+
+Height: 4
+Operations: 8   [Compare:7 create:1 ]
+__________________________________
+Insert: 10
+
+              51               
+               
+      34               81       
+               
+  10       43       64       84   
+               
+9   15               72         
+               
+
+Height: 4
+Operations: 16   [Compare:15 create:1 ]
+__________________________________
+Delete: 51
+
+              43               
+               
+      34               81       
+               
+  10               64       84   
+               
+9   15               72         
+               
+
+Height: 4
+Operations: 6   [Compare:5 Delete:1 ]
+__________________________________
+Delete: 43
+
+              34               
+               
+      10               81       
+               
+  9       15       64       84   
+               
+                    72         
+               
+
+Height: 4
+Operations: 4   [Compare:3 Delete:1 ]
+__________________________________
+Delete: 84
+
+              34               
+               
+      10               72       
+               
+  9       15       64       81   
+               
+                              
+               
+
+Height: 4
+Operations: 11   [Compare:10 Delete:1 ]
+__________________________________
+Delete: 64
+
+              34               
+               
+      10               72       
+               
+  9       15               81   
+               
+                              
+               
+
+Height: 4
+Operations: 5   [Compare:4 Delete:1 ]
+__________________________________
+Delete: 81
+
+              34               
+               
+      10               72       
+               
+  9       15                   
+               
+                              
+               
+
+Height: 4
+Operations: 5   [Compare:4 Delete:1 ]
+__________________________________
+Delete: 34
+
+              15               
+               
+      10               72       
+               
+  9                           
+               
+                              
+               
+
+Height: 4
+Operations: 6   [Compare:5 Delete:1 ]
+__________________________________
+Delete: 15
+
+              10               
+               
+      9               72       
+               
+                              
+               
+                              
+               
+
+Height: 4
+Operations: 4   [Compare:3 Delete:1 ]
+__________________________________
+Delete: 72
+
+              10               
+               
+      9                       
+               
+                              
+               
+                              
+               
+
+Height: 4
+Operations: 4   [Compare:3 Delete:1 ]
+__________________________________
+Delete: 9
+
+              10               
+               
+                              
+               
+                              
+               
+                              
+               
+
+Height: 4
+Operations: 4   [Compare:3 Delete:1 ]
+__________________________________
+Delete: 10
+
+
+TREE IS EMPTY
+
+Height: 0
+Operations: 3   [Compare:2 Delete:1 ]
+__________________________________
+                 10output
+
+Creation:        79
+
+Search:          0
+
+Insert:          0
+
+Delete:          52
+
+               _____
+Total            131

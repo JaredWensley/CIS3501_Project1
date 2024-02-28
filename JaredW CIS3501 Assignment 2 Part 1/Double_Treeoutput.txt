@@ -1,0 +1,184 @@
+Insert: 1
+
+1 
+ 
+
+Height: 1
+Operations: 2   [Compare:1 create:1 ]
+__________________________________
+Insert: 2
+
+  1   
+   
+    2 
+   
+
+Height: 2
+Operations: 4   [Compare:3 create:1 ]
+__________________________________
+Insert: 4
+
+  2   
+   
+1   4 
+   
+
+Height: 2
+Operations: 9   [Compare:8 create:1 ]
+__________________________________
+Insert: 8
+
+      2       
+       
+  1       4   
+       
+            8 
+       
+
+Height: 3
+Operations: 6   [Compare:5 create:1 ]
+__________________________________
+Insert: 16
+
+      2       
+       
+  1       8   
+       
+        4   16 
+       
+
+Height: 3
+Operations: 11   [Compare:10 create:1 ]
+__________________________________
+Insert: 16
+
+      2       
+       
+  1       8   
+       
+        4   16-2 
+       
+
+Height: 3
+Operations: 7   [Compare:6 create:1 ]
+__________________________________
+Insert: 8
+
+      2       
+       
+  1       8-2   
+       
+        4   16-2 
+       
+
+Height: 3
+Operations: 5   [Compare:4 create:1 ]
+__________________________________
+Insert: 4
+
+      2       
+       
+  1       8-2   
+       
+        4-2   16-2 
+       
+
+Height: 3
+Operations: 7   [Compare:6 create:1 ]
+__________________________________
+Insert: 2
+
+      2-2       
+       
+  1       8-2   
+       
+        4-2   16-2 
+       
+
+Height: 3
+Operations: 3   [Compare:2 create:1 ]
+__________________________________
+Insert: 1
+
+      2-2       
+       
+  1-2       8-2   
+       
+        4-2   16-2 
+       
+
+Height: 3
+Operations: 5   [Compare:4 create:1 ]
+__________________________________
+Search: 1
+
+      2-2       
+       
+  1-2       8-2   
+       
+        4-2   16-2 
+       
+
+Height: 3
+Operations: 3   [Compare:3 ]
+__________________________________
+Search: 2
+
+      2-2       
+       
+  1-2       8-2   
+       
+        4-2   16-2 
+       
+
+Height: 3
+Operations: 2   [Compare:2 ]
+__________________________________
+Search: 4
+
+      2-2       
+       
+  1-2       8-2   
+       
+        4-2   16-2 
+       
+
+Height: 3
+Operations: 4   [Compare:4 ]
+__________________________________
+Search: 8
+
+      2-2       
+       
+  1-2       8-2   
+       
+        4-2   16-2 
+       
+
+Height: 3
+Operations: 3   [Compare:3 ]
+__________________________________
+Search: 16
+
+      2-2       
+       
+  1-2       8-2   
+       
+        4-2   16-2 
+       
+
+Height: 3
+Operations: 4   [Compare:4 ]
+__________________________________
+                 Double_Treeoutput
+
+Creation:        59
+
+Search:          16
+
+Insert:          0
+
+Delete:          0
+
+               _____
+Total            75

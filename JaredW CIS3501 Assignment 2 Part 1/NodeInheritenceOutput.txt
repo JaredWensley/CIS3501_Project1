@@ -1,0 +1,130 @@
+Insert: 9
+
+9 
+ 
+
+Height: 1
+Operations: 2   [Compare:1 create:1 ]
+__________________________________
+Insert: 13
+
+  9   
+   
+    13 
+   
+
+Height: 2
+Operations: 4   [Compare:3 create:1 ]
+__________________________________
+Insert: 6
+
+  9   
+   
+6   13 
+   
+
+Height: 2
+Operations: 4   [Compare:3 create:1 ]
+__________________________________
+Insert: 15
+
+      9       
+       
+  6       13   
+       
+            15 
+       
+
+Height: 3
+Operations: 6   [Compare:5 create:1 ]
+__________________________________
+Insert: 17
+
+      9       
+       
+  6       15   
+       
+        13   17 
+       
+
+Height: 3
+Operations: 11   [Compare:10 create:1 ]
+__________________________________
+Insert: 7
+
+      9       
+       
+  6       15   
+       
+    7   13   17 
+       
+
+Height: 3
+Operations: 6   [Compare:5 create:1 ]
+__________________________________
+Insert: 5
+
+      9       
+       
+  6       15   
+       
+5   7   13   17 
+       
+
+Height: 3
+Operations: 6   [Compare:5 create:1 ]
+__________________________________
+Insert: 4
+
+              9               
+               
+      6               15       
+               
+  5       7       13       17   
+               
+4                             
+               
+
+Height: 4
+Operations: 8   [Compare:7 create:1 ]
+__________________________________
+Delete: 13
+
+              9               
+               
+      6               15       
+               
+  5       7               17   
+               
+4                             
+               
+
+Height: 4
+Operations: 5   [Compare:4 Delete:1 ]
+__________________________________
+Delete: 6
+
+              9               
+               
+      5               15       
+               
+  4       7               17   
+               
+                              
+               
+
+Height: 4
+Operations: 5   [Compare:4 Delete:1 ]
+__________________________________
+                 NodeInheritenceOutput
+
+Creation:        47
+
+Search:          0
+
+Insert:          0
+
+Delete:          10
+
+               _____
+Total            57

@@ -1,0 +1,55 @@
+Insert: 6
+
+6 
+ 
+
+Height: 1
+Operations: 2   [Compare:1 create:1 ]
+__________________________________
+Insert: 3
+
+  6   
+   
+3     
+   
+
+Height: 2
+Operations: 4   [Compare:3 create:1 ]
+__________________________________
+Insert: 7
+
+  6   
+   
+3   7 
+   
+
+Height: 2
+Operations: 4   [Compare:3 create:1 ]
+__________________________________
+Insert: 9
+
+      6       
+       
+  3       7   
+       
+            9 
+       
+
+Height: 3
+Operations: 6   [Compare:5 create:1 ]
+__________________________________
+Error on line 1 of Action file: Invalid character, skipping line. 
+Error on line 2 of action file: Missing or invalid argument after command. Skipping line.
+Error on line 3 of action file: Missing or invalid argument after command. Skipping line.
+                 InvalidOrderOutput
+
+Creation:        16
+
+Search:          0
+
+Insert:          0
+
+Delete:          0
+
+               _____
+Total            16

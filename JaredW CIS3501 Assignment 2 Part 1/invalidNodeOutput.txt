@@ -1,0 +1,73 @@
+Insert: 9
+
+9 
+ 
+
+Height: 1
+Operations: 2   [Compare:1 create:1 ]
+__________________________________
+Insert: 14
+
+  9   
+   
+    14 
+   
+
+Height: 2
+Operations: 4   [Compare:3 create:1 ]
+__________________________________
+Insert: 7
+
+  9   
+   
+7   14 
+   
+
+Height: 2
+Operations: 4   [Compare:3 create:1 ]
+__________________________________
+Delete: 15
+
+15 not found: printing current tree
+  9   
+   
+7   14 
+   
+
+Height: 2
+Operations: 4   [Compare:4 ]
+__________________________________
+Delete: 13
+
+13 not found: printing current tree
+  9   
+   
+7   14 
+   
+
+Height: 2
+Operations: 4   [Compare:4 ]
+__________________________________
+Delete: 17
+
+17 not found: printing current tree
+  9   
+   
+7   14 
+   
+
+Height: 2
+Operations: 4   [Compare:4 ]
+__________________________________
+                 invalidNodeOutput
+
+Creation:        10
+
+Search:          0
+
+Insert:          0
+
+Delete:          12
+
+               _____
+Total            22

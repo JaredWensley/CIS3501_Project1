@@ -1,0 +1,30 @@
+Error opening file: insertfileemptyinserts.txt
+Search: 3
+
+
+TREE IS EMPTY
+
+Height: 0
+Operations: 2   [Compare:2 ]
+__________________________________
+Delete: 6
+
+6 not found: printing current tree
+
+TREE IS EMPTY
+
+Height: 0
+Operations: 2   [Compare:2 ]
+__________________________________
+                 InsertFileEmptyOutput
+
+Creation:        0
+
+Search:          2
+
+Insert:          0
+
+Delete:          2
+
+               _____
+Total            4

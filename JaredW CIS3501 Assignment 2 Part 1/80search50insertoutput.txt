@@ -1,0 +1,228 @@
+Insert: 51
+
+51 
+ 
+
+Height: 1
+Operations: 2   [Compare:1 create:1 ]
+__________________________________
+Insert: 43
+
+  51   
+   
+43     
+   
+
+Height: 2
+Operations: 4   [Compare:3 create:1 ]
+__________________________________
+Insert: 84
+
+  51   
+   
+43   84 
+   
+
+Height: 2
+Operations: 4   [Compare:3 create:1 ]
+__________________________________
+Insert: 64
+
+      51       
+       
+  43       84   
+       
+        64     
+       
+
+Height: 3
+Operations: 6   [Compare:5 create:1 ]
+__________________________________
+Insert: 81
+
+      51       
+       
+  43       81   
+       
+        64   84 
+       
+
+Height: 3
+Operations: 14   [Compare:13 create:1 ]
+__________________________________
+Insert: 34
+
+      51       
+       
+  43       81   
+       
+34       64   84 
+       
+
+Height: 3
+Operations: 6   [Compare:5 create:1 ]
+__________________________________
+Insert: 15
+
+      51       
+       
+  34       81   
+       
+15   43   64   84 
+       
+
+Height: 3
+Operations: 11   [Compare:10 create:1 ]
+__________________________________
+Insert: 72
+
+              51               
+               
+      34               81       
+               
+  15       43       64       84   
+               
+                    72         
+               
+
+Height: 4
+Operations: 8   [Compare:7 create:1 ]
+__________________________________
+Insert: 9
+
+              51               
+               
+      34               81       
+               
+  15       43       64       84   
+               
+9                   72         
+               
+
+Height: 4
+Operations: 8   [Compare:7 create:1 ]
+__________________________________
+Insert: 10
+
+              51               
+               
+      34               81       
+               
+  10       43       64       84   
+               
+9   15               72         
+               
+
+Height: 4
+Operations: 16   [Compare:15 create:1 ]
+__________________________________
+Insert: 15
+
+              51               
+               
+      34               81       
+               
+  10       43       64       84   
+               
+9   15-2               72         
+               
+
+Height: 4
+Operations: 9   [Compare:8 Insert:1 ]
+__________________________________
+Insert: 20
+
+              51               
+               
+      15-2               81       
+               
+  10       34       64       84   
+               
+9       20   43       72         
+               
+
+Height: 4
+Operations: 16   [Compare:15 Insert:1 ]
+__________________________________
+Search: 51
+
+              51               
+               
+      15-2               81       
+               
+  10       34       64       84   
+               
+9       20   43       72         
+               
+
+Height: 4
+Operations: 2   [Compare:2 ]
+__________________________________
+Search: 43
+
+              51               
+               
+      15-2               81       
+               
+  10       34       64       84   
+               
+9       20   43       72         
+               
+
+Height: 4
+Operations: 5   [Compare:5 ]
+__________________________________
+Search: 84
+
+              51               
+               
+      15-2               81       
+               
+  10       34       64       84   
+               
+9       20   43       72         
+               
+
+Height: 4
+Operations: 4   [Compare:4 ]
+__________________________________
+Search: 64
+
+              51               
+               
+      15-2               81       
+               
+  10       34       64       84   
+               
+9       20   43       72         
+               
+
+Height: 4
+Operations: 4   [Compare:4 ]
+__________________________________
+Search: 81
+
+              51               
+               
+      15-2               81       
+               
+  10       34       64       84   
+               
+9       20   43       72         
+               
+
+Height: 4
+Operations: 3   [Compare:3 ]
+__________________________________
+                 80search50insertoutput
+
+Creation:        79
+
+Search:          18
+
+Insert:          25
+
+Delete:          0
+
+               _____
+Total            122

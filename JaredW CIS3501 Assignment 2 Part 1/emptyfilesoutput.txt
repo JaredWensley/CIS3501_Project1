@@ -1,0 +1,14 @@
+Error: The file emptyfilesinserts.txt is empty, please enter a different file
+Error: The file emptyfilesactions.txt is empty, please enter a different file
+                 emptyfilesoutput
+
+Creation:        0
+
+Search:          0
+
+Insert:          0
+
+Delete:          0
+
+               _____
+Total            0

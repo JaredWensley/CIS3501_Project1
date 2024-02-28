@@ -1,0 +1,20 @@
+Error: Non-integer data found on line 1 in the InsertFile invalidDataInserts.txt. Skipping line.
+Error: Non-integer data found on line 2 in the InsertFile invalidDataInserts.txt. Skipping line.
+Error: Non-integer data found on line 3 in the InsertFile invalidDataInserts.txt. Skipping line.
+Error: Non-integer data found on line 4 in the InsertFile invalidDataInserts.txt. Skipping line.
+Error: Non-integer data found on line 5 in the InsertFile invalidDataInserts.txt. Skipping line.
+Error on line 1 of Action file: Invalid character, skipping line. 
+Error on line 2 of Action file: Invalid character, skipping line. 
+Error on line 3 of Action file: Invalid character, skipping line. 
+                 invalidDataOutput
+
+Creation:        0
+
+Search:          0
+
+Insert:          0
+
+Delete:          0
+
+               _____
+Total            0

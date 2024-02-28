@@ -126,13 +126,11 @@ void AVL::BalanceTree(TreeNode*& tree)
 
 		if (getBalanceFactor(tree->left) >= 0) {
 			// LEFT-LEFT scenario. Rotate Right once
-
-			cout << "right rotate" << endl;
 			SingleRight(tree);
 		}
 		else {
 			// LEFT-RIGHT scenario. Rotate left then right
-			cout << "doubleright" << endl;
+			
 			DoubleRight(tree);
 		}
 	}
@@ -140,12 +138,10 @@ void AVL::BalanceTree(TreeNode*& tree)
 
 		if (getBalanceFactor(tree->right) <= 0) {
 			// RIGHT-RIGHT scenario. Rotate left once
-			cout << "left rotate" << endl;
 			SingleLeft(tree);
 		}
 		else {
 			// RIGHT-LEFT scenario. Rotate right then left
-			cout << "double left" << endl;
 			DoubleLeft(tree);
 		}
 	}
