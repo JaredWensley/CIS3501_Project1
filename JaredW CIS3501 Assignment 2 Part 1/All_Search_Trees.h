@@ -37,6 +37,8 @@ struct OperationCount {
 		inserts = 0;
 	}
 };
+
+// Class that performs all search tree functions. other tress derived from this class.
 class BasicTree {
 public:
 	virtual void InsertItem(int item) = 0;
@@ -91,81 +93,4 @@ private:
 	void BalanceTree(TreeNode*& tree);
 };
 
-
-
 #endif 
-
-
-
-
-
-
-
-
-
-
-/*
-// For part 2 figure out correct inheritence and reuse code that can be reused.
-//Class for managing binary search tree functions
-class BST {
-public:
-	BST();
-	//int get_height(TreeNode* tree);
-	//void InsertFile(string filename, ofstream& outputfile);
-	//void ActionFile(string actionfile, ofstream& outputfile);
-	//void preorder(TreeNode* tree, int depth, int left, int right, vector<vector<string>>& result);
-	//void InsertItem(int);
-	//void DeleteItem(int, ofstream& outfile);
-	//void SearchItem(int& item, bool& found);
-	//void PrintTree(ofstream&, char OperationType);
-	//void OperationSummary(ofstream&, string);
-	//OperationCount opCount;	//Brings operation counter into scope
-
-private:
-	//bool isValidCommand(char check);
-	void Insert(TreeNode*& tree, int item);
-	void Print(TreeNode* tree, ofstream& outfile, char);
-	void Delete(TreeNode*& tree, int item, ofstream& outfile);
-	void DeleteNode(TreeNode*& tree);
-	void GetPredecessor(TreeNode* tree, int& item, int& twin_chain);
-	void DeletePredecessor(TreeNode*& tree, int item);
-	void Search(TreeNode* tree, int& item, bool& found);
-	TreeNode* root;				//Pointer to the tree root.
-};
-
-// Class for managing self balacing tree
-class AVL {
-public:
-	AVL();
-	void DeleteItem(int, ofstream& outfile);
-	void SearchItem(int& item, bool& found);
-	void OperationSummary(ofstream& outputfile, string test_title);
-	void ActionFile(string actionfile, ofstream& outputfile);
-	void InsertFile(string filename, ofstream& outputfile);
-	void SingleLeft(TreeNode*& tree);
-	void SingleRight(TreeNode*& tree);
-	void DoubleLeft(TreeNode*& tree);
-	void DoubleRight(TreeNode*& tree);
-	void BalanceTree(TreeNode*& tree);
-	void InsertItem(int item);
-	void PrintTree(ofstream&, char OperationType);
-	void preorder(TreeNode* tree, int depth, int left, int right, vector<vector<string>>& result);
-	OperationCount opCount;
-
-private:
-	bool isValidCommand(char check);
-	void Print(TreeNode* tree, ofstream& outfile, char);
-	int get_height(TreeNode* tree);
-	void Insert(TreeNode*& tree, int item);
-	int getBalanceFactor(TreeNode* tree);
-	void Search(TreeNode* tree, int& item, bool& found);
-	void Delete(TreeNode*& tree, int item, ofstream& outfile);
-	void DeleteNode(TreeNode*& tree);
-	void GetPredecessor(TreeNode* tree, int& item, int& twin_chain);
-	void DeletePredecessor(TreeNode*& tree, int item);
-	TreeNode* root;
-
-};
-*/
-
-
