@@ -10,7 +10,7 @@ using namespace std;
 
 // Default constructor
 AVL::AVL() {
-	root = nullptr;uj
+	root = nullptr;
 }
 
 // Inserts an number into the AVL tree
