@@ -49,7 +49,7 @@ Delete: 4
        
 
 Height: 3
-Operations: 5   [Compare:5 ]
+Operations: 8   [Compare:8 ]
 __________________________________
 Search: 5
 
@@ -75,7 +75,7 @@ Delete: 7
        
 
 Height: 3
-Operations: 5   [Compare:5 ]
+Operations: 8   [Compare:8 ]
 __________________________________
 Search: 8
 
@@ -98,7 +98,7 @@ Search:          10
 
 Insert:          0
 
-Delete:          10
+Delete:          16
 
                _____
-Total            44
+Total            50

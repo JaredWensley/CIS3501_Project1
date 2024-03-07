@@ -1,4 +1,4 @@
-Error: Non-integer data found on line 1 in the InsertFile emptytreeinsert.txt. Skipping line.
+Error: Non-integer data found on line 1 in the InsertFile emptyTreeinsert.txt. Skipping line.
 Search: 1
 
 

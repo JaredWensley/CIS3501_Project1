@@ -111,7 +111,7 @@ Delete: 15
        
 
 Height: 3
-Operations: 5   [Compare:5 ]
+Operations: 8   [Compare:8 ]
 __________________________________
 Delete: 2
 
@@ -123,7 +123,7 @@ Delete: 2
        
 
 Height: 3
-Operations: 5   [Compare:4 Delete:1 ]
+Operations: 7   [Compare:6 Delete:1 ]
 __________________________________
                  OperationsCheckOutput
 
@@ -133,7 +133,7 @@ Search:          10
 
 Insert:          0
 
-Delete:          10
+Delete:          15
 
                _____
-Total            54
+Total            59

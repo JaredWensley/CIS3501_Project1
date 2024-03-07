@@ -35,7 +35,7 @@ Delete: 15
    
 
 Height: 2
-Operations: 4   [Compare:4 ]
+Operations: 6   [Compare:6 ]
 __________________________________
 Delete: 13
 
@@ -46,7 +46,7 @@ Delete: 13
    
 
 Height: 2
-Operations: 4   [Compare:4 ]
+Operations: 6   [Compare:6 ]
 __________________________________
 Delete: 17
 
@@ -57,9 +57,9 @@ Delete: 17
    
 
 Height: 2
-Operations: 4   [Compare:4 ]
+Operations: 6   [Compare:6 ]
 __________________________________
-                 invalidNodeOutput
+                 InvalidNodeOutput
 
 Creation:        10
 
@@ -67,7 +67,7 @@ Search:          0
 
 Insert:          0
 
-Delete:          12
+Delete:          18
 
                _____
-Total            22
+Total            28

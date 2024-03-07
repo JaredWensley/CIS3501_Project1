@@ -120,15 +120,15 @@ Delete: 51
 
               43               
                
-      34               81       
+      10               81       
                
-  10               64       84   
+  9       34       64       84   
                
-9   15               72         
+        15           72         
                
 
 Height: 4
-Operations: 6   [Compare:5 Delete:1 ]
+Operations: 10   [Compare:9 Delete:1 ]
 __________________________________
 Delete: 43
 
@@ -142,7 +142,7 @@ Delete: 43
                
 
 Height: 4
-Operations: 4   [Compare:3 Delete:1 ]
+Operations: 7   [Compare:6 Delete:1 ]
 __________________________________
 Delete: 84
 
@@ -156,7 +156,7 @@ Delete: 84
                
 
 Height: 4
-Operations: 11   [Compare:10 Delete:1 ]
+Operations: 13   [Compare:12 Delete:1 ]
 __________________________________
 Delete: 64
 
@@ -170,77 +170,59 @@ Delete: 64
                
 
 Height: 4
-Operations: 5   [Compare:4 Delete:1 ]
+Operations: 7   [Compare:6 Delete:1 ]
 __________________________________
 Delete: 81
 
-              34               
-               
-      10               72       
-               
-  9       15                   
-               
-                              
-               
+      10       
+       
+  9       34   
+       
+        15   72 
+       
 
-Height: 4
-Operations: 5   [Compare:4 Delete:1 ]
+Height: 3
+Operations: 10   [Compare:9 Delete:1 ]
 __________________________________
 Delete: 34
 
-              15               
-               
-      10               72       
-               
-  9                           
-               
-                              
-               
+      10       
+       
+  9       15   
+       
+            72 
+       
 
-Height: 4
-Operations: 6   [Compare:5 Delete:1 ]
+Height: 3
+Operations: 7   [Compare:6 Delete:1 ]
 __________________________________
 Delete: 15
 
-              10               
-               
-      9               72       
-               
-                              
-               
-                              
-               
+  10   
+   
+9   72 
+   
 
-Height: 4
-Operations: 4   [Compare:3 Delete:1 ]
+Height: 2
+Operations: 6   [Compare:5 Delete:1 ]
 __________________________________
 Delete: 72
 
-              10               
-               
-      9                       
-               
-                              
-               
-                              
-               
+  10   
+   
+9     
+   
 
-Height: 4
-Operations: 4   [Compare:3 Delete:1 ]
+Height: 2
+Operations: 5   [Compare:4 Delete:1 ]
 __________________________________
 Delete: 9
 
-              10               
-               
-                              
-               
-                              
-               
-                              
-               
+10 
+ 
 
-Height: 4
-Operations: 4   [Compare:3 Delete:1 ]
+Height: 1
+Operations: 5   [Compare:4 Delete:1 ]
 __________________________________
 Delete: 10
 
@@ -258,7 +240,7 @@ Search:          0
 
 Insert:          0
 
-Delete:          52
+Delete:          73
 
                _____
-Total            131
+Total            152

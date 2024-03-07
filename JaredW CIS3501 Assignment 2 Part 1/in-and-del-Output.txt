@@ -50,7 +50,7 @@ Insert: 3
 Height: 3
 Operations: 6   [Compare:5 create:1 ]
 __________________________________
-Error: Non-integer data found on line 6 in the InsertFile in-and-del-inserts.txt. Skipping line.
+Error: Non-integer data found on line 6 in the InsertFile In-and-del-inserts.txt. Skipping line.
 Delete: 2
 
       6       
@@ -61,7 +61,7 @@ Delete: 2
        
 
 Height: 3
-Operations: 7   [Compare:6 Delete:1 ]
+Operations: 8   [Compare:7 Delete:1 ]
 __________________________________
 Delete: 9
 
@@ -71,7 +71,7 @@ Delete: 9
    
 
 Height: 2
-Operations: 10   [Compare:9 Delete:1 ]
+Operations: 11   [Compare:10 Delete:1 ]
 __________________________________
 Insert: 7
 
@@ -107,7 +107,7 @@ Delete: 6
        
 
 Height: 3
-Operations: 5   [Compare:4 Delete:1 ]
+Operations: 7   [Compare:6 Delete:1 ]
 __________________________________
 Insert: 8
 
@@ -121,7 +121,7 @@ Insert: 8
 Height: 3
 Operations: 11   [Compare:10 Insert:1 ]
 __________________________________
-                 in-and-del-Output
+                 In-and-del-Output
 
 Creation:        30
 
@@ -129,7 +129,7 @@ Search:          0
 
 Insert:          23
 
-Delete:          22
+Delete:          26
 
                _____
-Total            75
+Total            79
