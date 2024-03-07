@@ -101,6 +101,18 @@ void AVL::Delete(TreeNode*& tree, int item, ofstream& outfile) {
 		DeleteNode(tree);
 	}
 
+	// Set a new nodes height equal to 1
+	if (tree != nullptr) {
+		if (tree->height == 0) {
+			tree->height = 1;
+		}
+		// Find the new height of an already existing node. So we add a comparison
+		else {
+			tree->height = max(get_height(tree->right), get_height(tree->left)) + 1;
+			opCount.comparisons++;
+		}
+	}
+	
 	BalanceTree(tree);
 }
 

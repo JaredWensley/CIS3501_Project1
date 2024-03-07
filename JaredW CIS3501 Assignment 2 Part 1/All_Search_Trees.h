@@ -57,7 +57,6 @@ protected:
 	int get_height(TreeNode* tree);
 	void DeleteNode(TreeNode*& tree);
 	void GetPredecessor(TreeNode* tree, int& item, int& twin_chain);
-	//void DeletePredecessor(TreeNode*& tree, int item);
 	void Print(TreeNode* tree, ofstream& outfile, char);
 	void preorder(TreeNode* tree, int depth, int left, int right, vector<vector<string>>& result);
 	void Search(TreeNode* tree, int& item, bool& found);
