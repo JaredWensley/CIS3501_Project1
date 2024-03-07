@@ -262,6 +262,7 @@ void BasicTree::GetPredecessor(TreeNode* tree, int& item, int& twin_chain) {
 	item = tree->info;
 }
 
+/*
 // Helper function: Deletes predecessor from GetPredecessor()
 void BasicTree::DeletePredecessor(TreeNode*& tree, int item) {
 
@@ -281,7 +282,9 @@ void BasicTree::DeletePredecessor(TreeNode*& tree, int item) {
 		tree->twin = 1;		// Set twin value to default to delete the complete node
 		DeleteNode(tree);
 	}
+
 }
+*/
 
 // Recursive Helper Function that searches for an number in the tree. 
 void BasicTree::Search(TreeNode* tree, int& item, bool& found) {

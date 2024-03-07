@@ -114,3 +114,24 @@ void BST::Delete(TreeNode*& tree, int item, ofstream& outfile) {
 		DeleteNode(tree);
 	}
 }
+
+// Helper function: Deletes predecessor from GetPredecessor()
+void BST::DeletePredecessor(TreeNode*& tree, int item) {
+
+	// traverse to the LEFT node if the items value is less than the current nodes value
+	if (item < tree->info) {
+		opCount.comparisons++;
+		DeletePredecessor(tree->left, item);
+	}
+
+	// traverse to the RIGHT node if the items value is creater than the current nodes value
+	else if (item > tree->info) {
+		opCount.comparisons++;
+		DeletePredecessor(tree->right, item);
+	}
+	// Delete the node
+	else {
+		tree->twin = 1;		// Set twin value to default to delete the complete node
+		DeleteNode(tree);
+	}
+}

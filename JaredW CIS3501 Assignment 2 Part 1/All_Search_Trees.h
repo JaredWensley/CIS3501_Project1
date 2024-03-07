@@ -43,6 +43,7 @@ class BasicTree {
 public:
 	virtual void InsertItem(int item) = 0;
 	virtual void DeleteItem(int item, ofstream& outfile) = 0;
+	virtual void DeletePredecessor(TreeNode*& tree, int item) = 0;
 
 	void ProcessInsertFile(string filename, ofstream& outputfile);
 	void ProcessActionFile(string actionfile, ofstream& outputfile);
@@ -56,7 +57,7 @@ protected:
 	int get_height(TreeNode* tree);
 	void DeleteNode(TreeNode*& tree);
 	void GetPredecessor(TreeNode* tree, int& item, int& twin_chain);
-	void DeletePredecessor(TreeNode*& tree, int item);
+	//void DeletePredecessor(TreeNode*& tree, int item);
 	void Print(TreeNode* tree, ofstream& outfile, char);
 	void preorder(TreeNode* tree, int depth, int left, int right, vector<vector<string>>& result);
 	void Search(TreeNode* tree, int& item, bool& found);
@@ -69,6 +70,7 @@ public:
 	BST();
 	void InsertItem(int item) override;
 	void DeleteItem(int item, ofstream& outfile) override;
+	void DeletePredecessor(TreeNode*& tree, int item) override;
 
 protected: 
 	void Insert(TreeNode*& tree, int item);
@@ -81,6 +83,7 @@ public:
 	AVL();
 	void InsertItem(int item) override;
 	void DeleteItem(int item, ofstream& outfile) override;
+	void DeletePredecessor(TreeNode*& tree, int item) override;
 
 private:
 	int getBalanceFactor(TreeNode* tree);
